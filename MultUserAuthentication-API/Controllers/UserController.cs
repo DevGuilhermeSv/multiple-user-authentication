@@ -1,43 +1,87 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
+﻿using Application.DTO.User;
+using Application.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 namespace MultUsersAuthentication_API.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class UserController : ControllerBase
     {
-        // GET: api/<UserController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private readonly IUserService _userService;
+
+        public UserController(IUserService userService)
         {
-            return new string[] { "value1", "value2" };
+            _userService = userService;
         }
 
-        // GET api/<UserController>/5
+        [HttpPost("register")]
+        public async Task<IActionResult> Register([FromBody] RegisterUserDto registerDto)
+        {
+            var result = await _userService.UserRegister(registerDto);
+            if (result.Success)
+            {
+                return Ok(result.Data);
+            }
+            return BadRequest(result.Message);
+        }
+
+        [HttpPost("reset-password")]
+        public async Task<IActionResult> ResetPassword([FromBody] AccountConfirmationDto confirmationDto)
+        {
+            var result = await _userService.ResetPassword(confirmationDto);
+            if (result.Success)
+            {
+                return Ok(result.Data);
+            }
+            return BadRequest(result.Message);
+        }
+
+        [HttpPost("register-role")]
+        public async Task<IActionResult> RegisterRole([FromQuery] string userEmail, [FromQuery] string role)
+        {
+            await _userService.RegisterRole(userEmail, role);
+            return Ok();
+        }
+
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<IActionResult> GetById(Guid id)
         {
-            return "value";
+            var user = await _userService.GetById(id);
+            if (user != null)
+            {
+                return Ok(user);
+            }
+            return NotFound();
         }
 
-        // POST api/<UserController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpGet("email/{email}")]
+        public async Task<IActionResult> GetByEmail(string email)
         {
+            var user = await _userService.GetByEmail(email);
+            if (user != null)
+            {
+                return Ok(user);
+            }
+            return NotFound();
         }
 
-        // PUT api/<UserController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpGet("info/{userId}")]
+        public async Task<IActionResult> GetUserInformation(Guid userId)
         {
+            var result = await _userService.GetUserInformation(userId);
+            return Ok(result);
         }
 
-        // DELETE api/<UserController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpGet("password-confirmation/{userId}")]
+        public async Task<IActionResult> GetPasswordConfirmation(string userId)
         {
+            var result = await _userService.GetPasswordConfirmation(userId);
+            if (result.Success)
+            {
+                return Ok(result.Data);
+            }
+            return BadRequest(result.Message);
         }
     }
+
 }
