@@ -1,5 +1,6 @@
 ﻿using Application.DTO.User;
 using Application.Interfaces;
+using Domain.Enum;
 using Microsoft.AspNetCore.Mvc;
 namespace MultUsersAuthentication_API.Controllers
 {
@@ -37,7 +38,7 @@ namespace MultUsersAuthentication_API.Controllers
         }
 
         [HttpPost("register-role")]
-        public async Task<IActionResult> RegisterRole([FromQuery] string userEmail, [FromQuery] string role)
+        public async Task<IActionResult> RegisterRole([FromQuery] string userEmail, [FromQuery] RolesEnum role)
         {
             await _userService.RegisterRole(userEmail, role);
             return Ok();

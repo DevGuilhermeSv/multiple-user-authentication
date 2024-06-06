@@ -9,8 +9,11 @@ namespace Domain.Enum
     public class Roles
     {
         public const string Admin = "Admin";
-        public const string Client = "Cliente";
-        public const string Gestor = "Gestor";
-        public const string Proponente = "Proponente";
+        public const string Client = "Client";
+        public const string Manager = "Manager";
+    }
+    public enum RolesEnum
+    {
+        Admin,Client,Manager
     }
 }

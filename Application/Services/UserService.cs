@@ -99,10 +99,10 @@ namespace Application.service
             return ServiceResult<User>.FailResult(Error);
         }
 
-        public async Task RegisterRole(string userEmail, string role)
+        public async Task RegisterRole(string userEmail, RolesEnum role)
         {
 
-            if (await _roleManager.RoleExistsAsync(role))
+            if (await _roleManager.RoleExistsAsync(role.ToString()))
             {
                 User user = await _userManager.FindByEmailAsync(userEmail);
                 if (user == null) { throw new Exception("User not found"); }
