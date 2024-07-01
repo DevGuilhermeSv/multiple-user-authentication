@@ -6,8 +6,8 @@ namespace Application.Interfaces;
 
 public interface IClientService
 {
-    ServiceResult<Client> CreateManager(ClientDto managerDto);
-    ServiceResult<Client> GetManagerById(Guid id);
-    ServiceResult<IList<Client>> GetManager();
+    ServiceResult<Client> CreateClient(ClientDto managerDto);
+    ServiceResult<Client> GetClientById(Guid id);
+    ServiceResult<IList<Client>> GetClient();
    // ServiceResult<Client> UpdateManager(Guid id, ClientUpdateModel updateModel);
 }

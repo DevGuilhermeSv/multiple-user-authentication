@@ -7,17 +7,17 @@ namespace Application.Services;
 
 public class ClientService : IClientService
 {
-    public ServiceResult<Client> CreateManager(ClientDto managerDto)
+    public ServiceResult<Client> CreateClient(ClientDto managerDto)
     {
         throw new NotImplementedException();
     }
 
-    public ServiceResult<Client> GetManagerById(Guid id)
+    public ServiceResult<Client> GetClientById(Guid id)
     {
         throw new NotImplementedException();
     }
 
-    public ServiceResult<IList<Client>> GetManager()
+    public ServiceResult<IList<Client>> GetClient()
     {
         throw new NotImplementedException();
     }
