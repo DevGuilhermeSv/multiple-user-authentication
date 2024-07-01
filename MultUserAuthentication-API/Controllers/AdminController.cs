@@ -1,9 +1,9 @@
-﻿
-using Application.DTO.Admin;
+﻿using Application.DTO.Admin;
 using Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MultUsersAuthentication_API.Controllers;
+
 
 [ApiController]
 [Route("api/[controller]")]
@@ -17,10 +17,10 @@ public class AdminController : ControllerBase
     }
 
     [HttpPost]
-    [Route("CreateManager")]
-    public IActionResult CreateManager([FromBody] AdminDto managerDto)
+    [Route("CreateAdmin")]
+    public IActionResult CreateAdmin([FromBody] AdminDto adminDto)
     {
-        var result = _adminService.CreateManager(managerDto);
+        var result = _adminService.CreateAdmin(adminDto);
         if (!result.Success)
         {
             return BadRequest(result?.Message);
@@ -29,10 +29,10 @@ public class AdminController : ControllerBase
     }
 
     [HttpGet]
-    [Route("GetManagerById/{id}")]
-    public IActionResult GetManagerById(Guid id)
+    [Route("GetAdminById/{id}")]
+    public IActionResult GetAdminById(Guid id)
     {
-        var result = _adminService.GetManagerById(id);
+        var result = _adminService.GetAdminById(id);
         if (!result.Success)
         {
             return NotFound(result?.Message);
@@ -41,10 +41,10 @@ public class AdminController : ControllerBase
     }
 
     [HttpGet]
-    [Route("GetManagers")]
-    public IActionResult GetManagers()
+    [Route("GetAdmins")]
+    public IActionResult GetAdmins()
     {
-        var result = _adminService.GetManager();
+        var result = _adminService.GetAdmin();
         if (!result.Success)
         {
             return NotFound(result?.Message);
