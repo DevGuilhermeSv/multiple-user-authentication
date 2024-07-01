@@ -1,4 +1,5 @@
 ﻿using Application.DTO;
+using Application.DTO.Client;
 using Application.Interfaces;
 using Domain.Entities;
 
@@ -17,11 +18,6 @@ public class ClientService : IClientService
     }
 
     public ServiceResult<IList<Client>> GetManager()
-    {
-        throw new NotImplementedException();
-    }
-
-    public ServiceResult<Client> UpdateManager(Guid id, ClientUpdateModel updateModel)
     {
         throw new NotImplementedException();
     }

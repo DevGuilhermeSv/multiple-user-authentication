@@ -1,4 +1,5 @@
 ﻿using Application.DTO;
+using Application.DTO.Admin;
 using Application.Interfaces;
 using Domain.Entities;
 
@@ -20,9 +21,5 @@ public class AdminService: IAdminService
     {
         throw new NotImplementedException();
     }
-
-    public ServiceResult<Admin> UpdateManager(Guid id, AdminUpdateModel updateModel)
-    {
-        throw new NotImplementedException();
-    }
+    
 }

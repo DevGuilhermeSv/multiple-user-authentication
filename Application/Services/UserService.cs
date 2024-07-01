@@ -106,7 +106,7 @@ namespace Application.service
             {
                 User user = await _userManager.FindByEmailAsync(userEmail);
                 if (user == null) { throw new Exception("User not found"); }
-                await _userManager.AddToRoleAsync(user, role);
+                await _userManager.AddToRoleAsync(user, role.ToString());
             }
             else throw new Exception("Role undefined");
         }
@@ -170,11 +170,11 @@ namespace Application.service
             {
                 return _adminRepository.GetById(id).Id;
             }
-            else if (role == Roles.Gestor)
+            if (role == Roles.Manager)
             {
                 return _managerRepository.GetById(id).Id;
             }
-            else if (role == Roles.Client)
+            if (role == Roles.Client)
             {
                 return _clientRepository.GetById(id).Id;
             }

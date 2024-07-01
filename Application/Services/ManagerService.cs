@@ -1,4 +1,5 @@
 ﻿using Application.DTO;
+using Application.DTO.Manager;
 using Application.Interfaces;
 using Domain.Entities;
 
@@ -28,9 +29,5 @@ public class ManagerService: IManagerService
         throw new NotImplementedException();
     }
 
-    public ServiceResult<Manager> UpdateManager(Guid id, ManagerUpdateModel updateModel)
-    {
-        throw new NotImplementedException();
-    }
 }
 
