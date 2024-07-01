@@ -7,19 +7,18 @@ namespace Application.Services;
 
 public class AdminService: IAdminService
 {
-    public ServiceResult<Admin> CreateManager(AdminDto managerDto)
+    public ServiceResult<Admin> CreateAdmin(AdminDto managerDto)
     {
         throw new NotImplementedException();
     }
 
-    public ServiceResult<Admin> GetManagerById(Guid id)
+    public ServiceResult<Admin> GetAdminById(Guid id)
     {
         throw new NotImplementedException();
     }
 
-    public ServiceResult<IList<Admin>> GetManager()
+    public ServiceResult<IList<Admin>> GetAdmin()
     {
         throw new NotImplementedException();
     }
-    
 }
