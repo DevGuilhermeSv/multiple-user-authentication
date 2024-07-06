@@ -3,19 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Interfaces
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : class
     {
-       // public DbSet<T> DbSet { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
         public void Add(T entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int Count()
         {
             throw new NotImplementedException();
         }
@@ -30,17 +24,14 @@ namespace Infrastructure.Interfaces
             throw new NotImplementedException();
         }
 
+        public DbSet<T> DbSet { get; set; }
+
         public T GetById(Guid id)
         {
             throw new NotImplementedException();
         }
 
         public T GetById(string id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<T> Pagination(IQueryable<T> values, int page, int range)
         {
             throw new NotImplementedException();
         }

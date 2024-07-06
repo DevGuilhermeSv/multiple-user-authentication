@@ -4,10 +4,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure
 {
-    public class DbContext : IdentityDbContext<User>
+    public class DbContext(DbContextOptions options) : IdentityDbContext<User>(options)
     {
-        public DbContext(DbContextOptions options) : base(options)
-        {
-        }
+        public DbSet<Admin> Admins { get; set; }
+
+        public DbSet<Manager> Managers { get; set; }
+
+        public DbSet<Client> Clients { get; set; }
     }
+
 }
