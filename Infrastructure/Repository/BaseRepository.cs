@@ -1,44 +1,46 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Interfaces
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : class
     {
+        public DbContext Context { get; set; }
+        public BaseRepository(DbContext context)
+        {
+            Context = context;
+            DbSet = context.Set<T>();
+        }
+
+        public DbSet<T> DbSet { get; set; }
         public void Add(T entity)
         {
-            throw new NotImplementedException();
+            DbSet.Add(entity);
         }
 
         public void Delete(T entity)
         {
-            throw new NotImplementedException();
+            DbSet.Remove(entity);
         }
 
         public void Detached(T entity)
         {
-            throw new NotImplementedException();
+            DbSet.Entry(entity).State = EntityState.Detached;
         }
 
-        public DbSet<T> DbSet { get; set; }
 
-        public T GetById(Guid id)
+        public T? GetById(Guid id)
         {
-            throw new NotImplementedException();
+            return DbSet.Find(id);
         }
 
-        public T GetById(string id)
+        public T? GetById(string id)
         {
-            throw new NotImplementedException();
+            return DbSet.Find(id);
         }
 
         public void SaveChanges()
         {
-            throw new NotImplementedException();
+            Context.SaveChanges();
         }
 
         public void Update(T entity)

@@ -9,12 +9,12 @@ namespace Infrastructure.Interfaces
 {
     public interface IBaseRepository< T> where T : class
     {
-        DbSet<T> DbSet { get; set; }
-        T GetById(Guid id);
-        T GetById(string id);
-        void Add(T entity);
+        DbSet<T?> DbSet { get; set; }
+        T? GetById(Guid id);
+        T? GetById(string id);
+        void Add(T? entity);
         void SaveChanges();
         void Update(T entity);
-        void Delete(T entity);
+        void Delete(T? entity);
     }
 }
