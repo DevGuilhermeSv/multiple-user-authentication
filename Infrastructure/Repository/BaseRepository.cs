@@ -1,6 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Infrastructure.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
-namespace Infrastructure.Interfaces
+namespace Infrastructure.Repository
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : class
     {
