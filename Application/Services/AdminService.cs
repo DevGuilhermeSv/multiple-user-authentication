@@ -17,9 +17,9 @@ public class AdminService: IAdminService
         _userService = userService;
     }
 
-    public async Task<ServiceResult<Admin>> CreateAdmin(AdminDto managerDto)
+    public async Task<ServiceResult<Admin>> CreateAdmin(AdminDto adminDto)
     {
-        var userResult = await _userService.UserRegister(managerDto.RegisterUserDto);
+        var userResult = await _userService.UserRegister(adminDto.RegisterUserDto);
         if (!userResult.Success)
             return ServiceResult<Admin>.FailResult("Fail at register user");
         await _userService.RegisterRole(userResult.Data!.Email!, Roles.Admin);

@@ -16,5 +16,7 @@ namespace Infrastructure.Interfaces
         void SaveChanges();
         void Update(T entity);
         void Delete(T? entity);
+        IQueryable<T> GetAll();
+
     }
 }

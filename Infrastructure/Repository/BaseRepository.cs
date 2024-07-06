@@ -23,6 +23,11 @@ namespace Infrastructure.Repository
             DbSet.Remove(entity);
         }
 
+        public IQueryable<T> GetAll()
+        {
+            return DbSet;
+        }
+
         public void Detached(T entity)
         {
             DbSet.Entry(entity).State = EntityState.Detached;

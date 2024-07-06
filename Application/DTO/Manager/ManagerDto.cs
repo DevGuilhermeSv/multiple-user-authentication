@@ -1,3 +1,8 @@
-﻿namespace Application.DTO.Manager;
+﻿using Application.DTO.User;
 
-public record ManagerDto();
+namespace Application.DTO.Manager;
+
+public record ManagerDto()
+{
+    public RegisterUserDto RegisterUserDto { get; set; }
+}
