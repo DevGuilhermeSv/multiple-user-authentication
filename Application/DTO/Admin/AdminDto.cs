@@ -1,3 +1,5 @@
-﻿namespace Application.DTO.Admin;
+﻿using Application.DTO.User;
 
-public record AdminDto();
+namespace Application.DTO.Admin;
+
+public record AdminDto(RegisterUserDto RegisterUserDto);

@@ -99,14 +99,14 @@ namespace Application.service
             return ServiceResult<User>.FailResult(Error);
         }
 
-        public async Task RegisterRole(string userEmail, RolesEnum role)
+        public async Task RegisterRole(string userEmail, string role)
         {
 
-            if (await _roleManager.RoleExistsAsync(role.ToString()))
+            if (await _roleManager.RoleExistsAsync(role))
             {
                 User user = await _userManager.FindByEmailAsync(userEmail);
                 if (user == null) { throw new Exception("User not found"); }
-                await _userManager.AddToRoleAsync(user, role.ToString());
+                await _userManager.AddToRoleAsync(user, role);
             }
             else throw new Exception("Role undefined");
         }

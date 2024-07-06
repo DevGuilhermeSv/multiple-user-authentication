@@ -6,7 +6,7 @@ namespace Application.Interfaces;
 
 public interface IAdminService
 {
-    ServiceResult<Admin> CreateAdmin(AdminDto managerDto);
+    Task<ServiceResult<Admin>> CreateAdmin(AdminDto managerDto);
     ServiceResult<Admin> GetAdminById(Guid id);
     ServiceResult<IList<Admin>> GetAdmin();
     //ServiceResult<Admin> UpdateManager(Guid id, AdminUpdateModel updateModel);

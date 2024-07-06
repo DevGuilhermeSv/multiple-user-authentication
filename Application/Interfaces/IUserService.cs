@@ -11,7 +11,7 @@ namespace Application.Interfaces
         UserManager<User> _userManager => this._userManager;
         Task<ServiceResult<User>> UserRegister(RegisterUserDto registerDto);
         Task<ServiceResult<User>> ResetPassword(AccountConfirmationDto confirmationDto);
-        Task RegisterRole(string userEmail, RolesEnum role);
+        Task RegisterRole(string userEmail, string role);
         Task<User?> GetById(Guid id);
         Task<User?> GetByEmail(string email);
         Task<UserResult> GetUserInformation(Guid userId);
